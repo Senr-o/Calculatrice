@@ -16,7 +16,7 @@ while again == "yes":
         if carry != "yes":
             number_1 = input("Enter first number: ")
             try:
-                number_1 = int(number_1)
+                number_1 = float(number_1)
                 break
             except ValueError:
                 print("Error: Please enter a valid number for the first number.")
@@ -34,7 +34,7 @@ while again == "yes":
     while True:
         number_2 = input("Enter second number: ")
         try:
-            number_2 = int(number_2)
+            number_2 = float(number_2)
             break
         except ValueError:
             print("Error: Please enter a valid number for the second number.")
