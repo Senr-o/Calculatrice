@@ -16,10 +16,8 @@ def multiplication(number_1, number_2):
     return number_1 * number_2
 
 def division(number_1, number_2):
-    if number_2 != 0:
-        return number_1 / number_2
-    else:
-        print("Error: Division by zero is not allowed.")
+    return number_1 / number_2
+
 
 operation_symbol = {
     "+": addition,
@@ -57,9 +55,12 @@ while again == "yes":
         number_2 = input("Enter second number: ")
         try:
             number_2 = float(number_2)
-            break
+            if number_2 == 0 and choice == "/":
+                print("Division by zero is not allowed.")
+            else:
+                break
         except ValueError:
-            print("Error: Please enter a valid number for the second number.")
+                print("Error: Please enter a valid number for the second number.")
 
     if choice in operation_symbol:
         result = operation_symbol[choice](number_1,number_2)
