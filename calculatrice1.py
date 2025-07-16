@@ -6,6 +6,28 @@ p_history = "no"
 again = "yes"
 carry = "no"
 
+def addition(number_1, number_2):
+    return number_1 + number_2
+
+def soustraction(number_1, number_2):
+    return number_1 - number_2
+
+def multiplication(number_1, number_2):
+    return number_1 * number_2
+
+def division(number_1, number_2):
+    if number_2 != 0:
+        return number_1 / number_2
+    else:
+        print("Error: Division by zero is not allowed.")
+
+operation_symbol = {
+    "+": addition,
+    "-": soustraction,
+    "*": multiplication,
+    "/": division
+}
+
 print("""Welcome to my simple calculator!
 You can perform addition, substraction, multiplication, and division.""")
 
@@ -25,8 +47,8 @@ while again == "yes":
             break
 
     while True:
-        operation_symbol = input("Enter operation symbol (+, -, *, /) : ")
-        if operation_symbol in ["+", "-", "*", "/"]:
+        choice = input("Enter operation symbol (+, -, *, /) : ")
+        if choice in operation_symbol:
             break
         else:
             print("Error: Please enter a valide operation symbol (+, -, *, /).")
@@ -39,22 +61,13 @@ while again == "yes":
         except ValueError:
             print("Error: Please enter a valid number for the second number.")
 
-    if operation_symbol == "+":
-        result = number_1 + number_2
-    elif operation_symbol == "-":
-        result = number_1 - number_2
-    elif operation_symbol == "*": 
-        result = number_1 * number_2
-    elif operation_symbol == "/":
-        if number_2 !=0:
-            result = number_1 / number_2
-        else:
-            print("Error: Division by zero is not allowed.")
+    if choice in operation_symbol:
+        result = operation_symbol[choice](number_1,number_2)
 
 
-    print(f"{number_1} {operation_symbol} {number_2} = {result}")
+    print(f"{number_1} {choice} {number_2} = {result}")
 
-    history.append(f"{number_1} {operation_symbol} {number_2} = {result}")
+    history.append(f"{number_1} {choice} {number_2} = {result}")
 
     while True:
         p_history = input("Do you want to print the history of operations? (yes/no): ").strip().lower()
